@@ -1,11 +1,11 @@
 import React from "react";
 
 function Form(props) {
-    const { member, change, formValues } = props;
+    const { change, formValues, submit } = props;
     return (
         <div>
             <h2>I am the form!</h2>
-            <form>
+            <form onSubmit={submit}>
                 <label>Name
                     <input
                         type="tex"

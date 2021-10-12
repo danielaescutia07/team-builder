@@ -18,6 +18,17 @@ function App() {
     setFormValues({ ...formValues, [name]: value});
   }
 
+  const submit = (evt) => {
+    evt.preventDefault();
+    const newMember = {
+      memberName: formValues.memberName.trim(),
+      email: formValues.email.trim(),
+      role: formValues.role
+    }
+    setMembers(members.concat(newMember));
+    setFormValues(initialFormValues);
+  }
+
   return (
     <div className="App">
      <h1>MEMBERS</h1>
@@ -26,7 +37,7 @@ function App() {
          {member.memberName} is a {member.role} and his/her email is {member.email}
         </div>
      ))}
-     <Form member={members} change={change} formValues={formValues} />
+     <Form change={change} formValues={formValues} submit={submit}/>
     </div>
   );
 }
